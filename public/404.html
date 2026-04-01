@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>페이지를 찾을 수 없습니다</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f7fb;
+        --surface: #ffffff;
+        --text: #18202f;
+        --muted: #5b6475;
+        --primary: #2563eb;
+        --border: #d8deea;
+        --shadow: 0 24px 60px rgba(37, 99, 235, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+        background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 55%);
+        color: var(--text);
+      }
+
+      .page {
+        width: min(960px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding: 48px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--primary);
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.15;
+      }
+
+      .description {
+        margin: 20px 0 0;
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: var(--primary);
+        color: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(100% - 20px, 960px);
+          padding: 32px 0;
+        }
+
+        .hero {
+          padding: 28px 22px;
+          border-radius: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">404</p>
+        <h1>요청한 페이지를 찾을 수 없습니다.</h1>
+        <p class="description">주소를 다시 확인하거나 홈으로 돌아가 배포 상태를 확인해 주세요.</p>
+        <div class="actions">
+          <a class="button" id="home-link" href="/">홈으로 이동</a>
+        </div>
+      </section>
+    </main>
+    <script>
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      const isProjectPages =
+        window.location.hostname.endsWith("github.io") && pathParts.length > 1;
+      const basePath = isProjectPages ? `/${pathParts[0]}/` : "/";
+
+      document.getElementById("home-link")?.setAttribute("href", basePath);
+    </script>
+  </body>
+</html>
