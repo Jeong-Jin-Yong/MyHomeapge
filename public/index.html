@@ -3,42 +3,192 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MyHomepage 테스트 페이지</title>
+    <title>Game Developer Portfolio Categories</title>
     <meta
       name="description"
-      content="GitHub Pages 배포 상태를 확인하기 위한 MyHomepage 테스트 페이지입니다."
+      content="게임 개발자 포트폴리오 레이아웃에 카테고리 중심 콘텐츠 구조를 적용한 초안입니다."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="page">
-      <section class="hero">
-        <p class="eyebrow">GitHub Pages Ready</p>
-        <h1>테스트 페이지가 정상적으로 배포되었습니다.</h1>
-        <p class="description">
-          지금은 GitHub Pages로 먼저 공개하고, 이후 원하는 시점에 커스텀 도메인으로 전환할 수 있도록
-          최소 구성으로 준비한 상태입니다.
-        </p>
-        <div class="actions">
-          <a
-            class="button primary"
-            href="https://github.com/Jeong-Jin-Yong/MyHomeapge"
-            target="_blank"
-            rel="noreferrer"
-            >저장소 확인</a
-          >
-          <a class="button secondary" href="./404.html">404 페이지 확인</a>
-        </div>
-      </section>
+    <div class="page-shell">
+      <header class="topbar" aria-label="사이트 상단">
+        <a class="brand" href="./index.html">Portfolio</a>
+        <nav class="topnav" aria-label="주요 탐색">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
 
-      <section class="status-card" aria-labelledby="status-heading">
-        <h2 id="status-heading">현재 상태</h2>
-        <ul>
-          <li>정적 테스트 페이지 구성 완료</li>
-          <li>GitHub Actions 기반 Pages 배포 워크플로 추가</li>
-          <li>추후 커스텀 도메인 연결 가능한 구조</li>
-        </ul>
-      </section>
-    </main>
+      <main class="layout">
+        <section class="hero-panel panel-grid">
+          <div class="hero-copy">
+            <p class="section-tag">GAME DEVELOPER PORTFOLIO</p>
+            <h1>Game<br />Developer<br />Portfolio</h1>
+            <p class="hero-text">
+              소개, 프로젝트, 경력, 기술 스택, 연락처처럼 핵심 카테고리만 먼저 배치한 포트폴리오 초안입니다.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#projects">View Projects</a>
+              <a class="button secondary" href="#contact">Get In Touch</a>
+            </div>
+          </div>
+
+          <aside class="profile-card" aria-label="프로필 카드">
+            <div class="avatar-frame" aria-hidden="true">
+              <span>01</span>
+            </div>
+            <p class="profile-label">AVAILABLE FOR</p>
+            <h2>Gameplay / Client / Tools</h2>
+            <dl class="profile-meta">
+              <div>
+                <dt>ROLE</dt>
+                <dd>Game Developer</dd>
+              </div>
+              <div>
+                <dt>ENGINE</dt>
+                <dd>Unity / Unreal</dd>
+              </div>
+              <div>
+                <dt>FOCUS</dt>
+                <dd>System / Combat / UI</dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+
+        <section class="info-grid" id="about">
+          <article class="panel intro-card">
+            <p class="section-tag">ABOUT</p>
+            <h2>Introduction</h2>
+            <p>
+              이 영역은 개발자 소개, 작업 방향, 강점, 관심 분야를 정리하는 카테고리입니다.
+            </p>
+          </article>
+
+          <article class="panel stat-card">
+            <p class="section-tag">HIGHLIGHTS</p>
+            <ul class="stat-list">
+              <li>
+                <strong>01</strong>
+                <span>Gameplay Systems</span>
+              </li>
+              <li>
+                <strong>02</strong>
+                <span>Combat / UI / UX</span>
+              </li>
+              <li>
+                <strong>03</strong>
+                <span>Tools / Pipeline</span>
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="panel projects-panel" id="projects" aria-labelledby="projects-heading">
+          <div class="section-heading">
+            <p class="section-tag">FEATURED PROJECTS</p>
+            <h2 id="projects-heading">Project Categories</h2>
+          </div>
+
+          <div class="project-list">
+            <article class="project-card accent-a">
+              <p class="project-index">01</p>
+              <h3>Commercial Project</h3>
+              <p>실제 출시 또는 상용화를 목표로 진행한 프로젝트 카테고리입니다.</p>
+              <ul>
+                <li>Gameplay</li>
+                <li>Live Build</li>
+                <li>Optimization</li>
+              </ul>
+            </article>
+
+            <article class="project-card accent-b">
+              <p class="project-index">02</p>
+              <h3>Prototype Project</h3>
+              <p>핵심 재미와 시스템 검증을 위한 프로토타입 카테고리입니다.</p>
+              <ul>
+                <li>Core Loop</li>
+                <li>Combat Test</li>
+                <li>Iteration</li>
+              </ul>
+            </article>
+
+            <article class="project-card accent-c">
+              <p class="project-index">03</p>
+              <h3>Personal Project</h3>
+              <p>개인 연구, 포트폴리오용 실험, 학습 기록을 담는 카테고리입니다.</p>
+              <ul>
+                <li>Study</li>
+                <li>Experiment</li>
+                <li>Showcase</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="split-grid">
+          <article class="panel timeline-panel" id="experience">
+            <div class="section-heading">
+              <p class="section-tag">EXPERIENCE</p>
+              <h2>Career Categories</h2>
+            </div>
+
+            <ol class="timeline-list">
+              <li>
+                <span class="timeline-year">2026</span>
+                <div>
+                  <strong>Current Role</strong>
+                  <p>현재 담당 업무, 핵심 역할, 주요 기여를 정리하는 영역입니다.</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline-year">2025</span>
+                <div>
+                  <strong>Previous Role</strong>
+                  <p>이전 프로젝트 경험과 담당 파트를 정리하는 영역입니다.</p>
+                </div>
+              </li>
+              <li>
+                <span class="timeline-year">2024</span>
+                <div>
+                  <strong>Early Experience</strong>
+                  <p>학습 단계 또는 초기 실무 경험을 요약하는 영역입니다.</p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <article class="panel skill-panel">
+            <div class="section-heading">
+              <p class="section-tag">STACK</p>
+              <h2>Tech Categories</h2>
+            </div>
+
+            <div class="chip-group" aria-label="기술 스택 목록">
+              <span>Unity</span>
+              <span>Unreal</span>
+              <span>C#</span>
+              <span>C++</span>
+              <span>UI</span>
+              <span>Tools</span>
+              <span>System Design</span>
+              <span>Optimization</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel contact-panel" id="contact">
+          <p class="section-tag">CONTACT</p>
+          <h2>Contact Category</h2>
+          <p>
+            이메일, 링크, 협업 문의, 채용 연락처를 정리하는 마지막 카테고리 영역입니다.
+          </p>
+          <a class="button primary" href="mailto:test@example.com">test@example.com</a>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
