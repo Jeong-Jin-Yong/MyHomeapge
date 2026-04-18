@@ -37,6 +37,20 @@ function renderLink(link, className) {
   return `<a class="${className}" href="${escapeHtml(link.href)}"${extraAttributes}>${escapeHtml(link.label)}</a>`;
 }
 
+function renderProjectMedia(item) {
+  const imageSrc = item?.cardImage?.src;
+  const imageAlt = item?.cardImage?.alt || "";
+  const imageMarkup = imageSrc
+    ? `<img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}" loading="lazy" />`
+    : '<div class="project-card-media-placeholder" aria-hidden="true"></div>';
+
+  return `
+    <div class="project-card-media">
+      ${imageMarkup}
+    </div>
+  `;
+}
+
 function renderTimelineMeta(items) {
   if (!Array.isArray(items) || items.length === 0) {
     return "";
@@ -217,6 +231,7 @@ function renderProjects(items) {
         return `
           <article class="project-card ${escapeHtml(item.accent || "")}" id="${escapeHtml(item.anchorId || "")}">
             <button class="project-card-button" type="button" data-project-trigger="${escapeHtml(item.id)}" aria-haspopup="dialog" aria-controls="project-detail-dialog">
+              ${renderProjectMedia(item)}
               <p class="project-index">${escapeHtml(item.index || "")}</p>
               <h3>${escapeHtml(item.title || "")}</h3>
               <p>${escapeHtml(item.description || "")}</p>
@@ -229,6 +244,7 @@ function renderProjects(items) {
 
       return `
         <article class="project-card ${escapeHtml(item.accent || "")}">
+          ${renderProjectMedia(item)}
           <p class="project-index">${escapeHtml(item.index || "")}</p>
           <h3>${escapeHtml(item.title || "")}</h3>
           <p>${escapeHtml(item.description || "")}</p>

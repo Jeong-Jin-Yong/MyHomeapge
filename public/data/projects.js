@@ -6,6 +6,10 @@ window.__HOME_PROJECTS__ = [
     title: "AR Slope",
     description: "현실 물체를 기반으로 트랙을 생성하는 AR 멀티플레이 레이싱 졸업 프로젝트입니다.",
     accent: "accent-a",
+    cardImage: {
+      src: "./images/projects/ARSlope-Logo.png",
+      alt: "AR Slope 프로젝트 카드 대표 이미지",
+    },
     tags: ["AR", "HoloLens 2", "Multiplayer"],
     detail: {
       subtitle: "Capstone Design (2025) · Team Lead / Main Developer",
@@ -31,6 +35,10 @@ window.__HOME_PROJECTS__ = [
     title: "Prototype Project",
     description: "핵심 재미와 시스템 검증을 위한 프로토타입 카테고리입니다.",
     accent: "accent-b",
+    cardImage: {
+      src: "./images/projects/prototype-cover.svg",
+      alt: "Prototype Project 카드 대표 이미지",
+    },
     tags: ["Core Loop", "Combat Test", "Iteration"],
   },
   {
@@ -38,6 +46,10 @@ window.__HOME_PROJECTS__ = [
     title: "Personal Project",
     description: "개인 연구, 포트폴리오용 실험, 학습 기록을 담는 카테고리입니다.",
     accent: "accent-c",
+    cardImage: {
+      src: "./images/projects/personal-cover.svg",
+      alt: "Personal Project 카드 대표 이미지",
+    },
     tags: ["Study", "Experiment", "Showcase"],
   },
 ];
