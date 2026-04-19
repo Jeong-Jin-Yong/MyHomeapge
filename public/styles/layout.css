@@ -55,6 +55,10 @@
 	gap: 24px;
 }
 
+:where(section, article)[id] {
+	scroll-margin-top: 100px;
+}
+
 .panel,
 .hero-panel,
 .profile-card {
