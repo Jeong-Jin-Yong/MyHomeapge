@@ -21,6 +21,7 @@
 	}
 
 	.categories-card .section-heading h2 {
+		align-self: flex-start;
 		text-align: left;
 	}
 }
