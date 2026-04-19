@@ -29,4 +29,5 @@
 - 이 파일을 추가하기 전에는 `AGENTS.md`, `CLAUDE.md`, Copilot, Cursor 규칙 같은 기존 repo 지침 파일이 없었습니다.
 
 ## Git 규칙
-- 커밋 메시지는 prefix를 포함한 짧은 영어 형식으로 작성합니다.
+- 커밋 메시지는 feat, fix, refactor, chore 등을 포함한 다양한 prefix를 포함한 짧은 영어 형식으로 작성합니다.
+- 형식: \<type\>(scope): \<subject\>
