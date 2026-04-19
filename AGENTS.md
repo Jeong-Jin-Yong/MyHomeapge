@@ -30,4 +30,3 @@
 
 ## Git 규칙
 - 커밋 메시지는 prefix를 포함한 짧은 영어 형식으로 작성합니다.
-    - 예: `feat: add page hero section`
