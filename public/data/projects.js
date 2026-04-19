@@ -32,9 +32,44 @@ window.__HOME_PROJECTS__ = [
   },
   {
     index: "02",
+    id: "catgirl-survivor-1",
+    anchorId: "project-catgirl-survivor-1",
+    title: "CatGirlSurvivor1",
+    description: "Unity와 C#으로 개발한 뱀서라이크 2D 도트 액션 게임 프로젝트입니다.",
+    accent: "accent-b",
+    tags: ["Unity", "C#", "ECS", "PC", "PS5", "Nintendo Switch", "Xbox"],
+    detail: {
+      subtitle: "Team Project (2025.07 ~ 2025.12) · Gameplay",
+      overview:
+        "",
+      highlights: [
+        "개성 있는 7명의 캣걸 캐릭터와 함께 몰려오는 적을 상대하는 뱀서라이크 스타일의 2D 도트 액션 게임입니다.",
+        "조합 스킬을 바탕으로 플레이할 때마다 다른 빌드를 만들 수 있어, 반복 플레이에서도 새로운 전투 흐름을 경험할 수 있습니다.",
+        "자동 공격 기반 조작 위에 이동과 스킬 선택에 집중하는 구조라 진입은 쉽고, 조합과 성장 설계는 깊게 즐길 수 있습니다.",
+        "캐릭터 레벨을 최대 1000까지 성장시키고 장비를 강화할 수 있어, 장기 플레이에서 누적 성장의 재미를 느낄 수 있습니다.",
+        "다양한 스테이지와 보스전, 플랫폼별 대응을 바탕으로 PC와 콘솔 환경 모두를 고려해 확장 중인 프로젝트입니다.",
+      ],
+      links: [
+        {
+          label: "Steam 페이지",
+          href: "https://store.steampowered.com/app/2890940/_/",
+        },
+        {
+          label: "PlayStation Store",
+          href: "https://store.playstation.com/en-us/concept/10013657",
+        },
+        {
+          label: "Nintendo eShop",
+          href: "https://www.nintendo.com/us/store/products/cat-girl-survivor-switch/",
+        },
+      ],
+    },
+  },
+  {
+    index: "03",
     title: "Prototype Project",
     description: "핵심 재미와 시스템 검증을 위한 프로토타입 카테고리입니다.",
-    accent: "accent-b",
+    accent: "accent-c",
     cardImage: {
       src: "./images/projects/prototype-cover.svg",
       alt: "Prototype Project 카드 대표 이미지",
@@ -42,10 +77,10 @@ window.__HOME_PROJECTS__ = [
     tags: ["Core Loop", "Combat Test", "Iteration"],
   },
   {
-    index: "03",
+    index: "04",
     title: "Personal Project",
     description: "개인 연구, 포트폴리오용 실험, 학습 기록을 담는 카테고리입니다.",
-    accent: "accent-c",
+    accent: "accent-a",
     cardImage: {
       src: "./images/projects/personal-cover.svg",
       alt: "Personal Project 카드 대표 이미지",
