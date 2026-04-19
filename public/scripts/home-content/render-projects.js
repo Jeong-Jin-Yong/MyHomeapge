@@ -34,7 +34,7 @@ export function renderProjects(items) {
 
       if (item.detail && item.id) {
         return `
-          <article class="project-card ${escapeHtml(item.accent || "")}" id="${escapeHtml(item.anchorId || "")}">
+          <article class="project-card ${escapeHtml(item.themeClass || "")}" id="${escapeHtml(item.anchorId || "")}">
             <button class="project-card-button" type="button" data-project-trigger="${escapeHtml(item.id)}" aria-haspopup="dialog" aria-controls="project-detail-dialog">
               ${renderProjectMedia(item)}
               <p class="project-index">${escapeHtml(item.index || "")}</p>
@@ -48,7 +48,7 @@ export function renderProjects(items) {
       }
 
       return `
-        <article class="project-card ${escapeHtml(item.accent || "")}">
+        <article class="project-card ${escapeHtml(item.themeClass || "")}">
           ${renderProjectMedia(item)}
           <p class="project-index">${escapeHtml(item.index || "")}</p>
           <h3>${escapeHtml(item.title || "")}</h3>

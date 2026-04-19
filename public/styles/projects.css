@@ -84,17 +84,17 @@
 	text-transform: uppercase;
 }
 
-.accent-a {
+.project-1 {
 	box-shadow: inset 0 0 0 1px rgba(255, 111, 216, 0.14);
 	background: linear-gradient(180deg, rgba(255, 111, 216, 0.12), rgba(255, 255, 255, 0.03));
 }
 
-.accent-b {
+.project-2 {
 	box-shadow: inset 0 0 0 1px rgba(108, 229, 255, 0.14);
 	background: linear-gradient(180deg, rgba(108, 229, 255, 0.12), rgba(255, 255, 255, 0.03));
 }
 
-.accent-c {
+.project-3 {
 	box-shadow: inset 0 0 0 1px rgba(183, 255, 122, 0.14);
 	background: linear-gradient(180deg, rgba(183, 255, 122, 0.12), rgba(255, 255, 255, 0.03));
 }
