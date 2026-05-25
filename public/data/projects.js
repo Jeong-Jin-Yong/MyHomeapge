@@ -66,6 +66,10 @@ window.__HOME_PROJECTS__ = [
           label: "Nintendo eShop",
           href: "https://www.nintendo.com/us/store/products/cat-girl-survivor-switch/",
         },
+        {
+          label: "Xbox Store",
+          href: "https://www.xbox.com/en-US/games/store/cat-girl-survivor/9NDL6CWHZ7WR",
+        },
       ],
     },
   },
