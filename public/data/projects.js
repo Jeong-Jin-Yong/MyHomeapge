@@ -5,6 +5,10 @@ window.__HOME_PROJECTS__ = [
     anchorId: "project-arslope",
     title: "AR Slope",
     description: "현실 물체를 기반으로 트랙을 생성하는 AR 멀티플레이 레이싱 졸업 프로젝트입니다.",
+    category: {
+      key: "team",
+      label: "팀 프로젝트",
+    },
     themeClass: "project-1",
     cardImage: {
       src: "./images/projects/ARSlope-Logo.png",
@@ -36,6 +40,10 @@ window.__HOME_PROJECTS__ = [
     anchorId: "project-catgirl-survivor-1",
     title: "CatGirlSurvivor1",
     description: "Unity와 C#으로 개발한 뱀서라이크 2D 도트 액션 게임 프로젝트입니다.",
+    category: {
+      key: "company",
+      label: "MinimumStudio",
+    },
     themeClass: "project-2",
     cardImage: {
       src: "./images/projects/CatGirlSurvivor1-Logo.jpg",
@@ -43,9 +51,8 @@ window.__HOME_PROJECTS__ = [
     },
     tags: ["Unity", "C#", "ECS", "PC", "PS5", "Nintendo Switch", "Xbox"],
     detail: {
-      subtitle: "Team Project (2025.07 ~ ) · Gameplay",
       overview:
-        "Unity와 C#으로 개발 중인 뱀서라이크 스타일의 2D 도트 액션 게임으로, 7명의 캣걸 캐릭터와 조합형 스킬 빌드를 중심으로 반복 플레이마다 다른 전투 흐름을 만들 수 있도록 설계한 팀 프로젝트입니다. 쉬운 조작과 깊은 성장 구조를 함께 노리며 PC와 콘솔 출시를 함께 전개하고 있습니다.",
+        "Unity와 C#으로 개발 중인 뱀서라이크 스타일의 2D 도트 액션 게임으로, 7명의 캣걸 캐릭터와 조합형 스킬 빌드를 중심으로 반복 플레이마다 다른 전투 흐름을 만들 수 있도록 설계한 회사 프로젝트입니다. 쉬운 조작과 깊은 성장 구조를 함께 노리며 PC와 콘솔 출시를 함께 전개하고 있습니다.",
       highlights: [
         "개성 있는 7명의 캣걸 캐릭터와 함께 몰려오는 적을 상대하는 뱀서라이크 스타일의 2D 도트 액션 게임입니다.",
         "조합 스킬을 바탕으로 플레이할 때마다 다른 빌드를 만들 수 있어, 반복 플레이에서도 새로운 전투 흐름을 경험할 수 있습니다.",
