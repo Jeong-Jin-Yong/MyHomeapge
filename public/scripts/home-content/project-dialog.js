@@ -13,6 +13,64 @@ import { escapeHtml, renderLink } from "./utils.js";
 let lastProjectTrigger = null;
 let projectDetailLookup = new Map();
 
+const DIALOG_FOCUSABLE_SELECTOR = [
+  'a[href]',
+  'button:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
+function renderDialogHighlight(value) {
+  const highlight = String(value || "");
+  const terminalPhrase = highlight.match(/^(.*?)([^\s]+ 수 있습니다\.)$/u);
+
+  if (!terminalPhrase) {
+    return escapeHtml(highlight);
+  }
+
+  return `${escapeHtml(terminalPhrase[1])}<span class="project-dialog-phrase">${escapeHtml(terminalPhrase[2])}</span>`;
+}
+
+function setDialogBackgroundInert(isInert) {
+  const backgroundElements = [
+    document.querySelector(".topbar"),
+    ...document.querySelectorAll(".layout > :not([data-project-dialog])"),
+  ].filter(Boolean);
+
+  backgroundElements.forEach((element) => {
+    element.inert = isInert;
+  });
+}
+
+function trapProjectDialogFocus(event) {
+  if (event.key !== "Tab" || !projectDialog || projectDialog.hidden) {
+    return;
+  }
+
+  const focusableElements = Array.from(
+    projectDialog.querySelectorAll(DIALOG_FOCUSABLE_SELECTOR),
+  ).filter((element) => element.getClientRects().length > 0);
+
+  if (focusableElements.length === 0) {
+    event.preventDefault();
+    return;
+  }
+
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+  const activeElement = document.activeElement;
+
+  if (event.shiftKey && (activeElement === firstElement || !projectDialog.contains(activeElement))) {
+    event.preventDefault();
+    lastElement.focus();
+    return;
+  }
+
+  if (!event.shiftKey && (activeElement === lastElement || !projectDialog.contains(activeElement))) {
+    event.preventDefault();
+    firstElement.focus();
+  }
+}
+
 export function setProjectDetailLookup(items) {
   projectDetailLookup = new Map(
     items
@@ -28,6 +86,7 @@ export function closeProjectDialog() {
 
   projectDialog.hidden = true;
   document.body.classList.remove("dialog-open");
+  setDialogBackgroundInert(false);
 
   if (lastProjectTrigger) {
     lastProjectTrigger.focus();
@@ -60,7 +119,7 @@ export function openProjectDialog(project, trigger) {
 
   if (projectDialogHighlights) {
     projectDialogHighlights.innerHTML = Array.isArray(project.detail.highlights)
-      ? project.detail.highlights.map((item) => `<li>${escapeHtml(item)}</li>`).join("")
+      ? project.detail.highlights.map((item) => `<li>${renderDialogHighlight(item)}</li>`).join("")
       : "";
     projectDialogHighlights.hidden = !projectDialogHighlights.innerHTML;
   }
@@ -78,6 +137,7 @@ export function openProjectDialog(project, trigger) {
   lastProjectTrigger = trigger || null;
   projectDialog.hidden = false;
   document.body.classList.add("dialog-open");
+  setDialogBackgroundInert(true);
   projectDialogCloseButton?.focus();
 }
 
@@ -113,6 +173,9 @@ export function setupProjectDialog() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !projectDialog.hidden) {
       closeProjectDialog();
+      return;
     }
+
+    trapProjectDialogFocus(event);
   });
 }

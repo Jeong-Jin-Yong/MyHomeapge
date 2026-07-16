@@ -11,22 +11,23 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
     <div class="page-shell">
       <header class="topbar" aria-label="사이트 상단">
         <a class="brand" href="./index.html">wls0yd Portfolio</a>
         <nav class="topnav" aria-label="주요 탐색">
-          <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#experience">Career</a>
+          <a href="#stack">Stack</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
 
-      <main class="layout">
-        <section class="hero-panel panel-grid">
+      <main class="layout" id="main-content" tabindex="-1">
+        <section class="hero-panel panel-grid" aria-labelledby="hero-heading">
           <div class="hero-copy">
             <p class="section-tag">DEVELOPER PORTFOLIO</p>
-            <h1 class="hero-name">정진용<br />Jeong JinYong</h1>
+            <h1 class="hero-name" id="hero-heading">정진용<br />Jeong JinYong</h1>
             <p class="hero-text">
               게임 개발과 콘솔 출시 경험을 기반으로, AI와 CLI 기반 워크플로를 활용해 다양한 개발 문제를 빠르게 이해하고 해결하는 개발자를 지향합니다.
             </p>
@@ -59,35 +60,11 @@
           </aside>
         </section>
 
-        <section class="info-grid" id="about">
-          <article class="panel intro-card">
-            <div class="section-heading">
-              <p class="section-tag">ABOUT</p>
-              <h2>Introduction</h2>
-            </div>
-            <div class="intro-copy" data-introduce-content>
-              <p class="dynamic-status">Introduce data is loading.</p>
-            </div>
-          </article>
-
-          <article class="panel stat-card categories-card">
-            <div class="section-heading">
-              <p class="section-tag">STACK</p>
-              <h2>Tech Categories</h2>
-            </div>
-
-            <div class="chip-group" aria-label="상단 기술 카테고리 목록">
-              <span>Unity</span>
-              <span>Cocos Creator</span>
-              <span>C#</span>
-              <span>TypeScript</span>
-            </div>
-          </article>
-        </section>
-
         <section class="panel projects-panel" id="projects" aria-labelledby="projects-heading">
           <div class="section-heading">
-            <p class="section-tag">FEATURED PROJECTS</p>
+            <div class="section-heading-copy">
+              <p class="section-tag">FEATURED PROJECTS</p>
+            </div>
             <h2 id="projects-heading">Selected Projects</h2>
           </div>
 
@@ -116,32 +93,49 @@
           </div>
         </div>
 
-        <section>
-          <article class="panel timeline-panel" id="experience">
-            <div class="section-heading">
+        <section class="panel timeline-panel" id="experience" aria-labelledby="career-heading">
+          <div class="section-heading">
+            <div class="section-heading-copy">
               <p class="section-tag">CAREER</p>
-              <h2>Career Journey</h2>
             </div>
+            <h2 id="career-heading">Career Journey</h2>
+          </div>
 
-            <ol class="timeline-list" data-career-list>
-              <li>
-                <p class="dynamic-status">Career data is loading.</p>
-              </li>
-            </ol>
-          </article>
+          <ol class="timeline-list" data-career-list>
+            <li>
+              <p class="dynamic-status">Career data is loading.</p>
+            </li>
+          </ol>
         </section>
 
-        <section class="panel contact-panel" id="contact">
-          <p class="section-tag">CONTACT</p>
-          <h2>Contact</h2>
-          <p>
-            프로젝트, 채용, 협업 관련 문의는 아래 이메일로 연락해 주세요.
-          </p>
+        <section class="panel stat-card categories-card" id="stack" aria-labelledby="stack-heading">
+          <div class="section-heading">
+            <div class="section-heading-copy">
+              <p class="section-tag">STACK</p>
+            </div>
+            <h2 id="stack-heading">Tech Categories</h2>
+          </div>
+
+          <div class="chip-group" aria-label="상단 기술 카테고리 목록">
+            <span>Unity</span>
+            <span>Cocos Creator</span>
+            <span>C#</span>
+            <span>TypeScript</span>
+          </div>
+        </section>
+
+        <section class="panel contact-panel" id="contact" aria-labelledby="contact-heading">
+          <div class="contact-copy">
+            <p class="section-tag">CONTACT</p>
+            <h2 id="contact-heading">Contact</h2>
+            <p>
+              프로젝트, 채용, 협업 관련 문의는 아래 이메일로 연락해 주세요.
+            </p>
+          </div>
           <a class="button primary" href="mailto:noel3927@gmail.com">noel3927@gmail.com</a>
         </section>
       </main>
     </div>
-    <script src="./data/introduce.js" defer></script>
     <script src="./data/projects.js" defer></script>
     <script src="./data/career.js" defer></script>
     <script type="module" src="./scripts/home-content.js"></script>

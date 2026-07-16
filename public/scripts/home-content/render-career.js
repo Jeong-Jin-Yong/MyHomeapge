@@ -1,6 +1,29 @@
 import { careerList } from "./dom.js";
 import { escapeHtml, renderLink } from "./utils.js";
 
+function renderCareerTitle(value) {
+  const title = String(value || "");
+  const aliasMatch = title.match(/^(.*?)(\s*)(\([^()]+\))$/u);
+
+  if (!aliasMatch) {
+    return escapeHtml(title);
+  }
+
+  return `${escapeHtml(aliasMatch[1])}${escapeHtml(aliasMatch[2])}<span class="timeline-title-alias">${escapeHtml(aliasMatch[3])}</span>`;
+}
+
+function renderTimelineDetailLabel(value) {
+  const label = String(value || "");
+  const periodSeparator = " · ";
+  const periodStart = label.lastIndexOf(periodSeparator);
+
+  if (periodStart < 0) {
+    return escapeHtml(label);
+  }
+
+  return `${renderCareerTitle(label.slice(0, periodStart))}<span class="timeline-detail-period">${escapeHtml(label.slice(periodStart))}</span>`;
+}
+
 function renderTimelineMeta(items) {
   if (!Array.isArray(items) || items.length === 0) {
     return "";
@@ -35,7 +58,7 @@ function renderTimelineHighlights(items) {
             ? renderLink({ href: item.href, label: item.linkLabel }, "timeline-link")
             : "";
           const summaryParts = [
-            item.label ? `<span class="timeline-detail-label">${escapeHtml(item.label)}</span>` : "",
+            item.label ? `<span class="timeline-detail-label">${renderTimelineDetailLabel(item.label)}</span>` : "",
             link,
             item.suffix ? `<span>${escapeHtml(item.suffix)}</span>` : "",
           ].filter(Boolean);
@@ -72,7 +95,7 @@ export function renderCareer(items) {
         <li>
           <span class="timeline-year">${escapeHtml(item.year || "")}</span>
           <div class="timeline-copy">
-            <strong>${escapeHtml(item.title || "")}</strong>
+            <strong>${renderCareerTitle(item.title)}</strong>
             ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
             ${renderTimelineMeta(item.meta)}
             ${renderTimelineHighlights(item.highlights)}

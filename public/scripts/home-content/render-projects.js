@@ -1,14 +1,13 @@
 import { projectList } from "./dom.js";
 import { bindProjectTriggers, setProjectDetailLookup } from "./project-dialog.js";
-import { escapeHtml } from "./utils.js";
+import { escapeHtml, renderLink } from "./utils.js";
 
 const PROJECT_CATEGORIES = [
   {
-    key: "personal",
-    eyebrow: "PERSONAL",
-    title: "개인 프로젝트",
-    description: "혼자 기획하거나 직접 구현한 프로젝트를 모아 보여주는 영역입니다.",
-    emptyMessage: "아직 공개 가능한 개인 프로젝트는 정리 중입니다.",
+    key: "company",
+    eyebrow: "COMPANY",
+    title: "MinimumStudio",
+    description: "MinimumStudio에서 참여한 실무 기반 프로젝트입니다.",
   },
   {
     key: "team",
@@ -17,12 +16,21 @@ const PROJECT_CATEGORIES = [
     description: "학교, 협업, 팀 단위로 역할을 나누어 완성한 프로젝트입니다.",
   },
   {
-    key: "company",
-    eyebrow: "COMPANY",
-    title: "MinimumStudio",
-    description: "MinimumStudio에서 참여한 실무 기반 프로젝트입니다.",
+    key: "personal",
+    eyebrow: "PERSONAL",
+    title: "개인 프로젝트",
+    description: "혼자 기획하거나 직접 구현한 프로젝트를 모아 보여주는 영역입니다.",
+    emptyMessage: "아직 공개 가능한 개인 프로젝트는 정리 중입니다.",
   },
 ];
+
+const PLATFORM_TAGS = new Set([
+  "HoloLens 2",
+  "PC",
+  "PS5",
+  "Nintendo Switch",
+  "Xbox",
+]);
 
 let renderedProjectItems = [];
 let projectHashHandlerBound = false;
@@ -57,39 +65,59 @@ function renderProjectMedia(item) {
   `;
 }
 
-function renderProjectContent(item, tags, note) {
+function renderProjectContent(item, tags, note, links, action = "") {
   return `
     ${renderProjectMedia(item)}
-    <p class="project-index">${escapeHtml(item.index || "")}</p>
-    <h3>${escapeHtml(item.title || "")}</h3>
-    <p>${escapeHtml(item.description || "")}</p>
-    ${note}
-    <ul>${tags}</ul>
+    <div class="project-card-body">
+      <p class="project-index">${escapeHtml(item.index || "")}</p>
+      <h3>${escapeHtml(item.title || "")}</h3>
+      <ul class="project-tags">${tags}</ul>
+      <p class="project-card-description">${escapeHtml(item.description || "")}</p>
+      ${note}
+      ${links ? `<div class="project-card-links">${links}</div>` : ""}
+      ${action}
+    </div>
   `;
 }
 
 function renderProjectCard(item) {
   const tags = Array.isArray(item.tags)
-    ? item.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join("")
+    ? [...item.tags]
+      .sort((left, right) => Number(PLATFORM_TAGS.has(right)) - Number(PLATFORM_TAGS.has(left)))
+      .map((tag) => {
+        const className = PLATFORM_TAGS.has(tag) ? "project-tag-platform" : "";
+
+        return `<li class="${className}">${escapeHtml(tag)}</li>`;
+      })
+      .join("")
     : "";
   const note = item.externalNote
     ? `<p class="project-note">${escapeHtml(item.externalNote)}</p>`
     : "";
+  const links = Array.isArray(item.detail?.links)
+    ? item.detail.links
+      .map((link) => renderLink(link, "project-card-link"))
+      .filter(Boolean)
+      .join("")
+    : "";
 
   if (item.detail && item.id) {
+    const action = `
+      <button class="project-card-button" type="button" data-project-trigger="${escapeHtml(item.id)}" aria-haspopup="dialog" aria-controls="project-detail-dialog">
+        자세히 보기
+      </button>
+    `;
+
     return `
       <article class="project-card ${escapeHtml(item.themeClass || "")}" id="${escapeHtml(item.anchorId || "")}">
-        ${renderProjectContent(item, tags, note)}
-        <button class="project-card-button" type="button" data-project-trigger="${escapeHtml(item.id)}" aria-haspopup="dialog" aria-controls="project-detail-dialog">
-          자세히 보기
-        </button>
+        ${renderProjectContent(item, tags, note, links, action)}
       </article>
     `;
   }
 
   return `
     <article class="project-card ${escapeHtml(item.themeClass || "")}">
-      ${renderProjectContent(item, tags, note)}
+      ${renderProjectContent(item, tags, note, links)}
     </article>
   `;
 }

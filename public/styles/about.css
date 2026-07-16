@@ -1,91 +1,41 @@
-.stat-list,
-.project-card ul,
-.timeline-list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.stat-list {
-	display: grid;
-	gap: 16px;
-}
-
-.intro-card .section-heading {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 12px;
-	margin-bottom: 0;
-}
-
-.intro-card .section-heading .section-tag {
-	margin-bottom: 0;
-	color: var(--cyan);
-	font-size: 0.82rem;
-}
-
-.intro-card .section-heading h2 {
-	margin-bottom: 0;
-	font-size: clamp(1.8rem, 4vw, 3.4rem);
-	letter-spacing: -0.04em;
-	line-height: 1;
-}
-
-.intro-copy {
-	display: grid;
-	gap: 16px;
-	margin-top: clamp(18px, 2.6vw, 28px);
-}
-
-.intro-copy p {
-	margin: 0;
-}
-
 .categories-card {
-	display: flex;
-	flex-direction: column;
-	gap: clamp(18px, 2.6vw, 28px);
-	min-height: 100%;
+	display: grid;
+	grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 1fr);
+	align-items: end;
+	gap: var(--space-8);
+	background: var(--color-surface-alt);
 }
 
 .categories-card .section-heading {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 12px;
-	margin-bottom: 0;
-}
-
-.categories-card .section-heading .section-tag {
-	margin-bottom: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 .categories-card .section-heading h2 {
-	align-self: flex-start;
-	font-size: clamp(1.8rem, 4vw, 3.4rem);
-	letter-spacing: -0.04em;
-	line-height: 1;
-	white-space: nowrap;
-	text-align: left;
-	text-transform: uppercase;
+	font-size: var(--type-h2);
 }
 
-.categories-card .chip-group {
-	margin-top: 0;
+.chip-group {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: var(--space-2);
+	margin: 0;
 }
 
-.stat-list li {
-	display: flex;
+.chip-group span {
+	display: inline-flex;
+	min-height: 3rem;
 	align-items: center;
-	gap: 14px;
-	padding: 16px 18px;
-	border-radius: 20px;
-	background: rgba(255, 255, 255, 0.04);
-	border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.stat-list strong {
-	font-size: 1.4rem;
-	color: var(--lime);
+	justify-content: center;
+	padding: var(--space-2) var(--space-3);
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-md);
+	background: var(--color-canvas-raised);
+	color: var(--color-text);
+	font-family: var(--font-mono);
+	font-size: var(--type-caption);
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	text-align: center;
 }
